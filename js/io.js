@@ -276,6 +276,8 @@ GameBoyAdvanceIO.prototype.loadU16 = function(offset) {
 
 	case this.KEYINPUT:
 		this.keypad.pollGamepads();
+		if(this.keypad.currentDown != 1023)
+			console.log("currentDown="+this.keypad.currentDown);
 		return this.keypad.currentDown;
 	case this.KEYCNT:
 		this.core.STUB('Unimplemented I/O register read: KEYCNT');

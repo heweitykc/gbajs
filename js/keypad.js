@@ -39,6 +39,56 @@ function GameBoyAdvanceKeypad() {
 	this.gamepads = [];
 };
 
+
+GameBoyAdvanceKeypad.prototype.sendKey = function(key, state) {
+	//console.log(key);
+	//console.log(state);
+	var toggle = 0;
+	switch (key) {
+	case this.KEYCODE_START:
+		toggle = this.START;
+		break;
+	case this.KEYCODE_SELECT:
+		toggle = this.SELECT;
+		break;
+	case this.KEYCODE_A:
+		toggle = this.A;
+		break;
+	case this.KEYCODE_B:
+		toggle = this.B;
+		break;
+	case this.KEYCODE_L:
+		toggle = this.L;
+		break;
+	case this.KEYCODE_R:
+		toggle = this.R;
+		break;
+	case this.KEYCODE_UP:
+		toggle = this.UP;
+		break;
+	case this.KEYCODE_RIGHT:
+		toggle = this.RIGHT;
+		break;
+	case this.KEYCODE_DOWN:
+		toggle = this.DOWN;
+		break;
+	case this.KEYCODE_LEFT:
+		toggle = this.LEFT;
+		break;
+	default:
+		return;
+	}
+
+	toggle = 1 << toggle;
+	if (state == "down") {
+		this.currentDown &= ~toggle;
+	} else {
+		this.currentDown |= toggle;
+	}
+
+	//console.log(this.currentDown);
+}
+
 GameBoyAdvanceKeypad.prototype.keyboardHandler = function(e) {
 	var toggle = 0;
 	switch (e.keyCode) {

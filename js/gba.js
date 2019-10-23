@@ -120,12 +120,23 @@ GameBoyAdvance.prototype.loadRomFromFile = function(romFile, callback) {
 	var reader = new FileReader();
 	var self = this;
 	reader.onload = function(e) {
+		console.log(e.target.result);
 		var result = self.setRom(e.target.result);
 		if (callback) {
 			callback(result);
 		}
 	}
 	reader.readAsArrayBuffer(romFile);
+};
+
+GameBoyAdvance.prototype.loadRomFromURL = function(url, callback) {
+	var self = this;
+	WebLoader.loadFile(url, function(data){
+		var result = self.setRom(data);
+		if (callback) {
+			callback(result);
+		}
+	});
 };
 
 GameBoyAdvance.prototype.reset = function() {
