@@ -86,134 +86,134 @@ GameBoyAdvanceKeypad.prototype.sendKey = function(key, state) {
 		this.currentDown |= toggle;
 	}
 
-	//console.log(this.currentDown);
+	console.log(this.currentDown);
 }
 
-GameBoyAdvanceKeypad.prototype.keyboardHandler = function(e) {
-	var toggle = 0;
-	switch (e.keyCode) {
-	case this.KEYCODE_START:
-		toggle = this.START;
-		break;
-	case this.KEYCODE_SELECT:
-		toggle = this.SELECT;
-		break;
-	case this.KEYCODE_A:
-		toggle = this.A;
-		break;
-	case this.KEYCODE_B:
-		toggle = this.B;
-		break;
-	case this.KEYCODE_L:
-		toggle = this.L;
-		break;
-	case this.KEYCODE_R:
-		toggle = this.R;
-		break;
-	case this.KEYCODE_UP:
-		toggle = this.UP;
-		break;
-	case this.KEYCODE_RIGHT:
-		toggle = this.RIGHT;
-		break;
-	case this.KEYCODE_DOWN:
-		toggle = this.DOWN;
-		break;
-	case this.KEYCODE_LEFT:
-		toggle = this.LEFT;
-		break;
-	default:
-		return;
-	}
+// GameBoyAdvanceKeypad.prototype.keyboardHandler = function(e) {
+// 	var toggle = 0;
+// 	switch (e.keyCode) {
+// 	case this.KEYCODE_START:
+// 		toggle = this.START;
+// 		break;
+// 	case this.KEYCODE_SELECT:
+// 		toggle = this.SELECT;
+// 		break;
+// 	case this.KEYCODE_A:
+// 		toggle = this.A;
+// 		break;
+// 	case this.KEYCODE_B:
+// 		toggle = this.B;
+// 		break;
+// 	case this.KEYCODE_L:
+// 		toggle = this.L;
+// 		break;
+// 	case this.KEYCODE_R:
+// 		toggle = this.R;
+// 		break;
+// 	case this.KEYCODE_UP:
+// 		toggle = this.UP;
+// 		break;
+// 	case this.KEYCODE_RIGHT:
+// 		toggle = this.RIGHT;
+// 		break;
+// 	case this.KEYCODE_DOWN:
+// 		toggle = this.DOWN;
+// 		break;
+// 	case this.KEYCODE_LEFT:
+// 		toggle = this.LEFT;
+// 		break;
+// 	default:
+// 		return;
+// 	}
 
-	toggle = 1 << toggle;
-	if (e.type == "keydown") {
-		this.currentDown &= ~toggle;
-	} else {
-		this.currentDown |= toggle;
-	}
+// 	toggle = 1 << toggle;
+// 	if (e.type == "keydown") {
+// 		this.currentDown &= ~toggle;
+// 	} else {
+// 		this.currentDown |= toggle;
+// 	}
 
-	if (this.eatInput) {
-		e.preventDefault();
-	}
-};
+// 	if (this.eatInput) {
+// 		e.preventDefault();
+// 	}
+// };
 
-GameBoyAdvanceKeypad.prototype.gamepadHandler = function(gamepad) {
-	var value = 0;
-	if (gamepad.buttons[this.GAMEPAD_LEFT] > this.GAMEPAD_THRESHOLD) {
-		value |= 1 << this.LEFT;
-	}
-	if (gamepad.buttons[this.GAMEPAD_UP] > this.GAMEPAD_THRESHOLD) {
-		value |= 1 << this.UP;
-	}
-	if (gamepad.buttons[this.GAMEPAD_RIGHT] > this.GAMEPAD_THRESHOLD) {
-		value |= 1 << this.RIGHT;
-	}
-	if (gamepad.buttons[this.GAMEPAD_DOWN] > this.GAMEPAD_THRESHOLD) {
-		value |= 1 << this.DOWN;
-	}
-	if (gamepad.buttons[this.GAMEPAD_START] > this.GAMEPAD_THRESHOLD) {
-		value |= 1 << this.START;
-	}
-	if (gamepad.buttons[this.GAMEPAD_SELECT] > this.GAMEPAD_THRESHOLD) {
-		value |= 1 << this.SELECT;
-	}
-	if (gamepad.buttons[this.GAMEPAD_A] > this.GAMEPAD_THRESHOLD) {
-		value |= 1 << this.A;
-	}
-	if (gamepad.buttons[this.GAMEPAD_B] > this.GAMEPAD_THRESHOLD) {
-		value |= 1 << this.B;
-	}
-	if (gamepad.buttons[this.GAMEPAD_L] > this.GAMEPAD_THRESHOLD) {
-		value |= 1 << this.L;
-	}
-	if (gamepad.buttons[this.GAMEPAD_R] > this.GAMEPAD_THRESHOLD) {
-		value |= 1 << this.R;
-	}
+// GameBoyAdvanceKeypad.prototype.gamepadHandler = function(gamepad) {
+// 	var value = 0;
+// 	if (gamepad.buttons[this.GAMEPAD_LEFT] > this.GAMEPAD_THRESHOLD) {
+// 		value |= 1 << this.LEFT;
+// 	}
+// 	if (gamepad.buttons[this.GAMEPAD_UP] > this.GAMEPAD_THRESHOLD) {
+// 		value |= 1 << this.UP;
+// 	}
+// 	if (gamepad.buttons[this.GAMEPAD_RIGHT] > this.GAMEPAD_THRESHOLD) {
+// 		value |= 1 << this.RIGHT;
+// 	}
+// 	if (gamepad.buttons[this.GAMEPAD_DOWN] > this.GAMEPAD_THRESHOLD) {
+// 		value |= 1 << this.DOWN;
+// 	}
+// 	if (gamepad.buttons[this.GAMEPAD_START] > this.GAMEPAD_THRESHOLD) {
+// 		value |= 1 << this.START;
+// 	}
+// 	if (gamepad.buttons[this.GAMEPAD_SELECT] > this.GAMEPAD_THRESHOLD) {
+// 		value |= 1 << this.SELECT;
+// 	}
+// 	if (gamepad.buttons[this.GAMEPAD_A] > this.GAMEPAD_THRESHOLD) {
+// 		value |= 1 << this.A;
+// 	}
+// 	if (gamepad.buttons[this.GAMEPAD_B] > this.GAMEPAD_THRESHOLD) {
+// 		value |= 1 << this.B;
+// 	}
+// 	if (gamepad.buttons[this.GAMEPAD_L] > this.GAMEPAD_THRESHOLD) {
+// 		value |= 1 << this.L;
+// 	}
+// 	if (gamepad.buttons[this.GAMEPAD_R] > this.GAMEPAD_THRESHOLD) {
+// 		value |= 1 << this.R;
+// 	}
 
-	this.currentDown = ~value & 0x3FF;
-};
+// 	this.currentDown = ~value & 0x3FF;
+// };
 
-GameBoyAdvanceKeypad.prototype.gamepadConnectHandler = function(gamepad) {
-	this.gamepads.push(gamepad);
-};
+// GameBoyAdvanceKeypad.prototype.gamepadConnectHandler = function(gamepad) {
+// 	this.gamepads.push(gamepad);
+// };
 
-GameBoyAdvanceKeypad.prototype.gamepadDisconnectHandler = function(gamepad) {
-	this.gamepads = self.gamepads.filter(function(other) { return other != gamepad });
-};
+// GameBoyAdvanceKeypad.prototype.gamepadDisconnectHandler = function(gamepad) {
+// 	this.gamepads = self.gamepads.filter(function(other) { return other != gamepad });
+// };
 
-GameBoyAdvanceKeypad.prototype.pollGamepads = function() {
-	var navigatorList = [];
-	if (navigator.webkitGetGamepads) {
-		navigatorList = navigator.webkitGetGamepads();
-	} else if (navigator.getGamepads) {
-		navigatorList = navigator.getGamepads();
-	}
+// GameBoyAdvanceKeypad.prototype.pollGamepads = function() {
+// 	var navigatorList = [];
+// 	if (navigator.webkitGetGamepads) {
+// 		navigatorList = navigator.webkitGetGamepads();
+// 	} else if (navigator.getGamepads) {
+// 		navigatorList = navigator.getGamepads();
+// 	}
 
-	// Let's all give a shout out to Chrome for making us get the gamepads EVERY FRAME
-	if (navigatorList.length) {
-		this.gamepads = [];
-	}
-	for (var i = 0; i < navigatorList.length; ++i) {
-		if (navigatorList[i]) {
-			this.gamepads.push(navigatorList[i]);
-		}
-	}
-	if (this.gamepads.length > 0) {
-		this.gamepadHandler(this.gamepads[0]);
-	}
+// 	// Let's all give a shout out to Chrome for making us get the gamepads EVERY FRAME
+// 	if (navigatorList.length) {
+// 		this.gamepads = [];
+// 	}
+// 	for (var i = 0; i < navigatorList.length; ++i) {
+// 		if (navigatorList[i]) {
+// 			this.gamepads.push(navigatorList[i]);
+// 		}
+// 	}
+// 	if (this.gamepads.length > 0) {
+// 		this.gamepadHandler(this.gamepads[0]);
+// 	}
 
-};
+// };
 
 GameBoyAdvanceKeypad.prototype.registerHandlers = function() {
-	window.addEventListener("keydown", this.keyboardHandler.bind(this), true);
-	window.addEventListener("keyup", this.keyboardHandler.bind(this), true);
+	// window.addEventListener("keydown", this.keyboardHandler.bind(this), true);
+	// window.addEventListener("keyup", this.keyboardHandler.bind(this), true);
 
-	window.addEventListener("gamepadconnected", this.gamepadConnectHandler.bind(this), true);
-	window.addEventListener("mozgamepadconnected", this.gamepadConnectHandler.bind(this), true);
-	window.addEventListener("webkitgamepadconnected", this.gamepadConnectHandler.bind(this), true);
+	// window.addEventListener("gamepadconnected", this.gamepadConnectHandler.bind(this), true);
+	// window.addEventListener("mozgamepadconnected", this.gamepadConnectHandler.bind(this), true);
+	// window.addEventListener("webkitgamepadconnected", this.gamepadConnectHandler.bind(this), true);
 
-	window.addEventListener("gamepaddisconnected", this.gamepadDisconnectHandler.bind(this), true);
-	window.addEventListener("mozgamepaddisconnected", this.gamepadDisconnectHandler.bind(this), true);
-	window.addEventListener("webkitgamepaddisconnected", this.gamepadDisconnectHandler.bind(this), true);
+	// window.addEventListener("gamepaddisconnected", this.gamepadDisconnectHandler.bind(this), true);
+	// window.addEventListener("mozgamepaddisconnected", this.gamepadDisconnectHandler.bind(this), true);
+	// window.addEventListener("webkitgamepaddisconnected", this.gamepadDisconnectHandler.bind(this), true);
 };

@@ -10,7 +10,7 @@ WebLoader.loadFile = function(url, callback) {
 		var arrayBuffer = xhr.response; // 注意:不是oReq.responseText
 		if (arrayBuffer) {
 			//var byteArray = new Uint8Array(arrayBuffer);
-			console.log(arrayBuffer);
+			// console.log(arrayBuffer);
 			callback(arrayBuffer);
 			return;
 		}
@@ -27,12 +27,14 @@ WebLoader.loadFile = function(url, callback) {
 ButtonKey = {};
 
 ButtonKey.init = function(sender, button, key){
-	button.onmousedown = function(e){
+	button.ontouchstart = function(e){
+		console.log("touchstart");
 		sender.sendKey(key, "down");
 		e.preventDefault();
 	};
 
-	button.onmouseup = function(e){
+	button.ontouchend = function(e){
+		console.log("touchend");
 		sender.sendKey(key, "up");
 		e.preventDefault();
 	};
