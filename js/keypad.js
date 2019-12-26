@@ -102,7 +102,7 @@ GameBoyAdvanceKeypad.prototype.sendKey = function(key, state) {
 
 GameBoyAdvanceKeypad.prototype.keyboardHandler = function(e) {
 	var toggle = 0;
-	console.log(e.keyCode);
+	//console.log(e.keyCode);
 	switch (e.keyCode) {
 		case this.KEYCODE_M:
 			toggle = this.START;
