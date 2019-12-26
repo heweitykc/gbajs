@@ -10,6 +10,17 @@ function GameBoyAdvanceKeypad() {
 	this.KEYCODE_L = 65;
 	this.KEYCODE_R = 83;
 
+	this.KEYCODE_M = 77;
+	this.KEYCODE_N = 78;
+	this.KEYCODE_W = 87;
+	this.KEYCODE_A = 65;
+	this.KEYCODE_S = 83;
+	this.KEYCODE_D = 68;
+	this.KEYCODE_J = 74;
+	this.KEYCODE_K = 75;
+	this.KEYCODE_U = 85;
+	this.KEYCODE_I = 73;
+
 	this.GAMEPAD_LEFT = 14;
 	this.GAMEPAD_UP = 12;
 	this.GAMEPAD_RIGHT = 15;
@@ -89,54 +100,56 @@ GameBoyAdvanceKeypad.prototype.sendKey = function(key, state) {
 	console.log(this.currentDown);
 }
 
-// GameBoyAdvanceKeypad.prototype.keyboardHandler = function(e) {
-// 	var toggle = 0;
-// 	switch (e.keyCode) {
-// 	case this.KEYCODE_START:
-// 		toggle = this.START;
-// 		break;
-// 	case this.KEYCODE_SELECT:
-// 		toggle = this.SELECT;
-// 		break;
-// 	case this.KEYCODE_A:
-// 		toggle = this.A;
-// 		break;
-// 	case this.KEYCODE_B:
-// 		toggle = this.B;
-// 		break;
-// 	case this.KEYCODE_L:
-// 		toggle = this.L;
-// 		break;
-// 	case this.KEYCODE_R:
-// 		toggle = this.R;
-// 		break;
-// 	case this.KEYCODE_UP:
-// 		toggle = this.UP;
-// 		break;
-// 	case this.KEYCODE_RIGHT:
-// 		toggle = this.RIGHT;
-// 		break;
-// 	case this.KEYCODE_DOWN:
-// 		toggle = this.DOWN;
-// 		break;
-// 	case this.KEYCODE_LEFT:
-// 		toggle = this.LEFT;
-// 		break;
-// 	default:
-// 		return;
-// 	}
+GameBoyAdvanceKeypad.prototype.keyboardHandler = function(e) {
+	var toggle = 0;
+	console.log(e.keyCode);
+	switch (e.keyCode) {
+		case this.KEYCODE_M:
+			toggle = this.START;
+			break;
+		case this.KEYCODE_N:
+			toggle = this.SELECT;
+			break;
+		
+		case this.KEYCODE_J:
+			toggle = this.A;
+			break;
+		case this.KEYCODE_K:
+			toggle = this.B;
+			break;
+		case this.KEYCODE_U:
+			toggle = this.L;
+			break;
+		case this.KEYCODE_I:
+			toggle = this.R;
+			break;
+		case this.KEYCODE_W:
+			toggle = this.UP;
+			break;
+		case this.KEYCODE_D:
+			toggle = this.RIGHT;
+			break;
+		case this.KEYCODE_S:
+			toggle = this.DOWN;
+			break;
+		case this.KEYCODE_A:
+			toggle = this.LEFT;
+			break;		
+		default:
+			return;
+	}
 
-// 	toggle = 1 << toggle;
-// 	if (e.type == "keydown") {
-// 		this.currentDown &= ~toggle;
-// 	} else {
-// 		this.currentDown |= toggle;
-// 	}
+	toggle = 1 << toggle;
+	if (e.type == "keydown") {
+		this.currentDown &= ~toggle;
+	} else {
+		this.currentDown |= toggle;
+	}
 
-// 	if (this.eatInput) {
-// 		e.preventDefault();
-// 	}
-// };
+	if (this.eatInput) {
+		e.preventDefault();
+	}
+};
 
 // GameBoyAdvanceKeypad.prototype.gamepadHandler = function(gamepad) {
 // 	var value = 0;
@@ -206,8 +219,8 @@ GameBoyAdvanceKeypad.prototype.sendKey = function(key, state) {
 // };
 
 GameBoyAdvanceKeypad.prototype.registerHandlers = function() {
-	// window.addEventListener("keydown", this.keyboardHandler.bind(this), true);
-	// window.addEventListener("keyup", this.keyboardHandler.bind(this), true);
+	window.addEventListener("keydown", this.keyboardHandler.bind(this), true);
+	window.addEventListener("keyup", this.keyboardHandler.bind(this), true);
 
 	// window.addEventListener("gamepadconnected", this.gamepadConnectHandler.bind(this), true);
 	// window.addEventListener("mozgamepadconnected", this.gamepadConnectHandler.bind(this), true);
